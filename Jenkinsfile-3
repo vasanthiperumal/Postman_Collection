@@ -4,7 +4,7 @@ pipeline {
     stage('run collection') {
       steps {
         sh 'docker run -t postman/newman run -h'
-        sh 'docker run -v ${WORKSPACE}:/etc/newman --workdir /etc/newman -t postman/newman run https://crimson-space-450985.postman.co/workspace/My-Workspace~d3cf4ee7-2179-49b3-8099-7c3faa274f12/collection/25279670-c0821c9b-b6a7-4a0d-98c1-912d9383dba3?action=share&creator=25279670 --color off --disable-unicode'
+        sh 'docker run -v ${WORKSPACE}:C:\\Users\\thann\\AppData\\Roaming\\npm\\newman --workdir C:\\Users\\thann\\AppData\\Roaming\\npm\\newman -t C:\\Users\\thann\\AppData\\Roaming\\npm\\newman run https://crimson-space-450985.postman.co/workspace/My-Workspace~d3cf4ee7-2179-49b3-8099-7c3faa274f12/collection/25279670-c0821c9b-b6a7-4a0d-98c1-912d9383dba3?action=share&creator=25279670 --color off --disable-unicode'
       }
     }
   }

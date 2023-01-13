@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "c0821c9b-b6a7-4a0d-98c1-912d9383dba3",
+		"name": "AllPrograms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25279670"
+	},
+	"item": [
+		{
+			"name": "AllPrograms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/allPrograms",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"allPrograms"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "https://lms-backend-service.herokuapp.com/lms",
+			"type": "string"
+		}
+	]
+}

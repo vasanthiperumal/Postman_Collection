@@ -1,0 +1,1937 @@
+{
+	"info": {
+		"_postman_id": "ef2a30de-e898-41bb-b81d-b2290359cb55",
+		"name": "Team7_LMS_API_1 Given Scenarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25279670"
+	},
+	"item": [
+		{
+			"name": "GET All_Programs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var moment = require ('moment');\r",
+							"var creationTime =  moment().format(\"YYYY-MM-DDTHH:MM:SS.SSS+SS:SS\");\r",
+							"var lastModTime =  moment().format(\"YYYY-MM-DDTHH:MM:SS.SSS+SS:SS\");\r",
+							"const res = pm.response.json();\r",
+							"\r",
+							"console.log(\"programId\"+ res[0].programId);\r",
+							"pm.globals.set(\"programId\", res[0].programId);\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"array\",\r",
+							"  \"items\": [\r",
+							"    {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"programId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"programDescription\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"programStatus\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"creationTime\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"lastModTime\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"programId\",\r",
+							"        \"programName\",\r",
+							"        \"programDescription\",\r",
+							"        \"programStatus\",\r",
+							"        \"creationTime\",\r",
+							"        \"lastModTime\"\r",
+							"      ]\r",
+							"    },\r",
+							"    {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"programId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"programDescription\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"programStatus\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"creationTime\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"lastModTime\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"programId\",\r",
+							"        \"programName\",\r",
+							"        \"programDescription\",\r",
+							"        \"programStatus\",\r",
+							"        \"creationTime\",\r",
+							"        \"lastModTime\"\r",
+							"      ]\r",
+							"    }\r",
+							"    \r",
+							"      ]\r",
+							"    }\r",
+							"  \r",
+							"\r",
+							"pm.test('Get Program by ID Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"Get All Program Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody).to.be.an(\"array\");\r",
+							"    pm.expect(responsebody[0].programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].programName).to.be.a('string');\r",
+							"    pm.expect(responsebody[0].programDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody[0].programStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody[0].creationTime).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody[0].lastModTime).to.be.a(\"string\");\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/allPrograms",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"allPrograms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Program_by_ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"programId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programDescription\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programStatus\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"creationTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"lastModTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"programId\",\r",
+							"    \"programName\",\r",
+							"    \"programDescription\",\r",
+							"    \"programStatus\",\r",
+							"    \"creationTime\",\r",
+							"    \"lastModTime\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test('Get Program by ID Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"Get Program by ID Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody.programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.programName).to.be.a('string');\r",
+							"    pm.expect(responsebody.programDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.programStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.creationTime).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.lastModTime).to.be.a(\"string\");\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/programs/:programId",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"programs",
+						":programId"
+					],
+					"variable": [
+						{
+							"key": "programId",
+							"value": "{{programId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Save Program",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require ('moment');\r",
+							"var creationTime =  moment().format(\"YYYY-MM-DDTHH:MM:SS.SSS+SS:SS\");\r",
+							"var lastModTime =  moment().format(\"YYYY-MM-DDTHH:MM:SS.SSS+SS:SS\");\r",
+							"console.log(\"creationTime and lastModTime\"+ moment().format(\"YYYY-MM-DDTHH:MM:SS.SSS+SS:SS\"));\r",
+							"\r",
+							"var monthYear = moment().format(\"MMMYY\");\r",
+							"const teamName = \"-CRUDCarriers-SDET-\";\r",
+							"parseInt(pm.globals.set(\"serialNumber\", parseInt(pm.globals.get(\"serialNumber\"))+1, 100),100);\r",
+							"\r",
+							"console.log (\"After increment serialNumber ==>\"+pm.globals.get(\"serialNumber\"));\r",
+							"\r",
+							"pm.globals.set(\"programName\", monthYear + teamName + pm.globals.get(\"serialNumber\"));\r",
+							"pm.globals.set(\"creationTime\", creationTime);\r",
+							"pm.globals.set(\"lastModTime\", lastModTime);\r",
+							"\r",
+							"var body = \r",
+							"    {\r",
+							"    \"programName\": pm.globals.get(\"programName\"),\r",
+							"    \"programDescription\": \"Learn API Automation \"+  pm.globals.get(\"serialNumber\"),\r",
+							"    \"programStatus\": \"Active\",\r",
+							"    \"creationTime\": pm.globals.get(\"creationTime\"),\r",
+							"    \"lastModTime\": pm.globals.get(\"lastModTime\")\r",
+							"   \r",
+							"}\r",
+							"\r",
+							"var jsonBody = JSON.stringify(body);\r",
+							"//console.log(\"Save Program jsonBody \"+JSON.stringify(body));\r",
+							"\r",
+							"pm.collectionVariables.set(\"request_body\",jsonBody)\r",
+							"//pm.collectionVariables.set(\"req_body\", JSON.stringify(body));\r",
+							"\r",
+							"//console.log(\"Save Program body set\"+JSON.stringify(body));\r",
+							"//console.log(\"Save Program reqbody \"+pm.globals.get(JSON.stringify(\"request_body\")));\r",
+							"\r",
+							"//postman.setNextRequest(\"{{baseurl}}/saveprogram\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"const res = pm.response.json();\r",
+							"\r",
+							"console.log(\"pm.globals.get(programId)\"+ res.programId);\r",
+							"\r",
+							"if(res.programId != null){\r",
+							"pm.globals.set(\"programId\", res.programId);\r",
+							"}\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"programId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programDescription\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programStatus\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"creationTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"lastModTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"programId\",\r",
+							"    \"programName\",\r",
+							"    \"programDescription\",\r",
+							"    \"programStatus\",\r",
+							"    \"creationTime\",\r",
+							"    \"lastModTime\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test('POST Save Program Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"POST Save Program Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody.programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.programName).to.be.a('string');\r",
+							"    pm.expect(responsebody.programDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.programStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.creationTime).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.lastModTime).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{request_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/saveprogram",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"saveprogram"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Program By Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"programId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programDescription\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programStatus\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"creationTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"lastModTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"programId\",\r",
+							"    \"programName\",\r",
+							"    \"programDescription\",\r",
+							"    \"programStatus\",\r",
+							"    \"creationTime\",\r",
+							"    \"lastModTime\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test('Update Program by Name Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"Update Program by Name Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody.programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.programName).to.be.a('string');\r",
+							"    pm.expect(responsebody.programDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.programStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.creationTime).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.lastModTime).to.be.a(\"string\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"var body = \r",
+							"    {\r",
+							"    \"programName\": pm.globals.get(\"programName\"),\r",
+							"    \"programDescription\": \"Update Program By Name \"+  pm.globals.get(\"serialNumber\"),\r",
+							"    \"programStatus\": \"InActive\",\r",
+							"    \"creationTime\": pm.globals.get(\"creationTime\"),\r",
+							"    \"lastModTime\": pm.globals.get(\"lastModTime\")\r",
+							"}\r",
+							"\r",
+							"pm.collectionVariables.set(\"request_body\", JSON.stringify(body));\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{request_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/program/:programName",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"program",
+						":programName"
+					],
+					"variable": [
+						{
+							"key": "programName",
+							"value": "{{programName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Program by Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"programId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programDescription\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programStatus\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"creationTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"lastModTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"programId\",\r",
+							"    \"programName\",\r",
+							"    \"programDescription\",\r",
+							"    \"programStatus\",\r",
+							"    \"creationTime\",\r",
+							"    \"lastModTime\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test('Update Program by ID Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"Update Program by ID Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody.programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.programName).to.be.a('string');\r",
+							"    pm.expect(responsebody.programDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.programStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.creationTime).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.lastModTime).to.be.a(\"string\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var pgmID = pm.globals.get(\"programId\");\r",
+							"console.log(\"pgmID ==>\"+ pgmID);\r",
+							"console.log(pm.globals.get(\"programName\"));\r",
+							"\r",
+							"var body = \r",
+							"    {\r",
+							"    \"programName\": pm.globals.get(\"programName\"),\r",
+							"    \"programDescription\": \"Update Program By ID \"+  pm.globals.get(\"serialNumber\"),\r",
+							"    \"programStatus\": \"Inactive\",\r",
+							"    \"creationTime\": pm.globals.get(\"creationTime\"),\r",
+							"    \"lastModTime\": pm.globals.get(\"lastModTime\")\r",
+							"}\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.collectionVariables.set(\"request_body\", JSON.stringify(body));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{request_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/putprogram/:programId",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"putprogram",
+						":programId"
+					],
+					"variable": [
+						{
+							"key": "programId",
+							"value": "{{programId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/deletebyprogid/:programId",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"deletebyprogid",
+						":programId"
+					],
+					"variable": [
+						{
+							"key": "programId",
+							"value": "{{programId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Create Program",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require ('moment');\r",
+							"var creationTime =  moment().format(\"YYYY-MM-DDTHH:MM:SS.SSS+SS:SS\");\r",
+							"var lastModTime =  moment().format(\"YYYY-MM-DDTHH:MM:SS.SSS+SS:SS\");\r",
+							"console.log(\"creationTime and lastModTime\"+ moment().format(\"YYYY-MM-DDTHH:MM:SS.SSS+SS:SS\"));\r",
+							"\r",
+							"var monthYear = moment().format(\"MMMYY\");\r",
+							"const teamName = \"-CRUDCarriers-SDET-\";\r",
+							"parseInt(pm.globals.set(\"serialNumber\", parseInt(pm.globals.get(\"serialNumber\"))+1, 100),100);\r",
+							"\r",
+							"console.log (\"After increment serialNumber ==>\"+pm.globals.get(\"serialNumber\"));\r",
+							"\r",
+							"pm.globals.set(\"programName\", monthYear + teamName + pm.globals.get(\"serialNumber\"));\r",
+							"pm.globals.set(\"creationTime\", creationTime);\r",
+							"pm.globals.set(\"lastModTime\", lastModTime);\r",
+							"\r",
+							"var body = \r",
+							"    {\r",
+							"    \"programName\": pm.globals.get(\"programName\"),\r",
+							"    \"programDescription\": \"Learn API Automation \"+  pm.globals.get(\"serialNumber\"),\r",
+							"    \"programStatus\": \"Active\",\r",
+							"    \"creationTime\": pm.globals.get(\"creationTime\"),\r",
+							"    \"lastModTime\": pm.globals.get(\"lastModTime\")\r",
+							"   \r",
+							"}\r",
+							"\r",
+							"var jsonBody = JSON.stringify(body);\r",
+							"//console.log(\"Save Program jsonBody \"+JSON.stringify(body));\r",
+							"\r",
+							"pm.collectionVariables.set(\"request_body\",jsonBody)\r",
+							"//pm.collectionVariables.set(\"req_body\", JSON.stringify(body));\r",
+							"\r",
+							"//console.log(\"Save Program body set\"+JSON.stringify(body));\r",
+							"//console.log(\"Save Program reqbody \"+pm.globals.get(JSON.stringify(\"request_body\")));\r",
+							"\r",
+							"//postman.setNextRequest(\"{{baseurl}}/saveprogram\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"const res = pm.response.json();\r",
+							"\r",
+							"console.log(\"pm.globals.get(programId)\"+ res.programId);\r",
+							"\r",
+							"if(res.programId != null){\r",
+							"pm.globals.set(\"programId\", res.programId);\r",
+							"}\r",
+							"pm.globals.set(\"programId\", res.programId);\r",
+							"if(res.programName != null){\r",
+							"pm.globals.set(\"updateProgramName\", res.programName);\r",
+							"}\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"programId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programDescription\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"programStatus\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"creationTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"lastModTime\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"programId\",\r",
+							"    \"programName\",\r",
+							"    \"programDescription\",\r",
+							"    \"programStatus\",\r",
+							"    \"creationTime\",\r",
+							"    \"lastModTime\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test('POST Create Program Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"POST Create Program Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody.programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.programName).to.be.a('string');\r",
+							"    pm.expect(responsebody.programDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.programStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.creationTime).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.lastModTime).to.be.a(\"string\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{request_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/saveprogram",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"saveprogram"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By Program Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseurl}}/deletebyprogname/:programName",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"deletebyprogname",
+						":programName"
+					],
+					"variable": [
+						{
+							"key": "programName",
+							"value": "{{updateProgramName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Batch create",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require ('moment');\r",
+							"var monthYear = moment().format(\"MMMYY\");\r",
+							"const teamName = \"-CRUDCarriers-SDET-\";\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.globals.set(\"batchName\",monthYear+ teamName +pm.variables.replaceIn('{{$randomInt}}'));\r",
+							"\r",
+							"\r",
+							"\r",
+							"var body = {\r",
+							"    \"batchName\":pm.globals.get(\"batchName\"),\r",
+							"    \"batchDescription\":\"API Testing\",\r",
+							"    \"batchStatus\":\"Active\",\r",
+							"    \"batchNoOfClasses\":\"12\",\r",
+							"    \"programId\":\"305\"\r",
+							"}\r",
+							"pm.collectionVariables.set(\"req_body\", JSON.stringify(body));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData=JSON.parse(responseBody);\r",
+							"pm.globals.set(\"newBatchId\",jsonData.batchId);\r",
+							"pm.globals.set(\"newBatchName\",jsonData.batchName);\r",
+							"pm.globals.set(\"newProgramId\",jsonData.programId);\r",
+							"pm.globals.set(\"newbatchStatus\",jsonData.batchStatus);\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"succeseful POST request\",()=>{\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"batchId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"batchName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"batchDescription\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"batchStatus\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"batchNoOfClasses\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"batchId\",\r",
+							"    \"batchName\",\r",
+							"    \"batchDescription\",\r",
+							"    \"batchStatus\",\r",
+							"    \"batchNoOfClasses\",\r",
+							"    \"programId\",\r",
+							"    \"programName\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"pm.test('POST Batch Create Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"POST Batch Create Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody.batchId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.batchName).to.be.a('string');\r",
+							"    pm.expect(responsebody.programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.batchDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.batchStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.batchNoOfClasses).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.programName).to.be.a(\"string\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{req_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/batches",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"batches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Batches",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"array\",\r",
+							"  \"items\": [\r",
+							"    {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"batchId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"batchName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchDescription\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchStatus\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchNoOfClasses\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"batchId\",\r",
+							"        \"batchName\",\r",
+							"        \"batchDescription\",\r",
+							"        \"batchStatus\",\r",
+							"        \"batchNoOfClasses\",\r",
+							"        \"programId\",\r",
+							"        \"programName\"\r",
+							"      ]\r",
+							"    },\r",
+							"    {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"batchId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"batchName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchDescription\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchStatus\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchNoOfClasses\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"batchId\",\r",
+							"        \"batchName\",\r",
+							"        \"batchDescription\",\r",
+							"        \"batchStatus\",\r",
+							"        \"batchNoOfClasses\",\r",
+							"        \"programId\",\r",
+							"        \"programName\"\r",
+							"      ]\r",
+							"    }\r",
+							"    \r",
+							"      ]\r",
+							"    }\r",
+							"  \r",
+							"\r",
+							"pm.test('Get Program by ID Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"Get All batches Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody).to.be.an(\"array\");\r",
+							"    pm.expect(responsebody[0].batchId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].batchName).to.be.a('string');\r",
+							"    pm.expect(responsebody[0].batchDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody[0].batchStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody[0].batchNoOfClasses).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].programName).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/batches",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"batches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Batches by Batch Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"array\",\r",
+							"  \"items\": [\r",
+							"    {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"batchId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"batchName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchDescription\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchStatus\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchNoOfClasses\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"batchId\",\r",
+							"        \"batchName\",\r",
+							"        \"batchDescription\",\r",
+							"        \"batchStatus\",\r",
+							"        \"batchNoOfClasses\",\r",
+							"        \"programId\",\r",
+							"        \"programName\"\r",
+							"      ]\r",
+							"    },\r",
+							"    {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"batchId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"batchName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchDescription\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchStatus\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchNoOfClasses\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"batchId\",\r",
+							"        \"batchName\",\r",
+							"        \"batchDescription\",\r",
+							"        \"batchStatus\",\r",
+							"        \"batchNoOfClasses\",\r",
+							"        \"programId\",\r",
+							"        \"programName\"\r",
+							"      ]\r",
+							"    }\r",
+							"    \r",
+							"      ]\r",
+							"    }\r",
+							"  \r",
+							"\r",
+							"pm.test('Get Program by ID Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"Get All batches Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody).to.be.an(\"array\");\r",
+							"    pm.expect(responsebody[0].batchId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].batchName).to.be.a('string');\r",
+							"    pm.expect(responsebody[0].batchDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody[0].batchStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody[0].batchNoOfClasses).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].programName).to.be.a(\"string\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/batches/batchName/{{newBatchName}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"batches",
+						"batchName",
+						"{{newBatchName}}"
+					],
+					"query": [
+						{
+							"key": "batchName",
+							"value": "PY02",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Batch by Batch ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"Get Batch by batchId Test data type of response\",()=>{\r",
+							"\r",
+							"    pm.expect(responsebody.batchId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.batchName).to.be.a('string');\r",
+							"    pm.expect(responsebody.programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.batchDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.batchStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.batchNoOfClasses).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.programName).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"batchId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"batchName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"batchDescription\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"batchStatus\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"batchNoOfClasses\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"batchId\",\r",
+							"    \"batchName\",\r",
+							"    \"batchDescription\",\r",
+							"    \"batchStatus\",\r",
+							"    \"batchNoOfClasses\",\r",
+							"    \"programId\",\r",
+							"    \"programName\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"pm.test('Get Batch by batchId Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/batches/batchId/{{newBatchId}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"batches",
+						"batchId",
+						"{{newBatchId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Batches by Program ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"array\",\r",
+							"  \"items\": [\r",
+							"    {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"batchId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"batchName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchDescription\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchStatus\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchNoOfClasses\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"batchId\",\r",
+							"        \"batchName\",\r",
+							"        \"batchDescription\",\r",
+							"        \"batchStatus\",\r",
+							"        \"batchNoOfClasses\",\r",
+							"        \"programId\",\r",
+							"        \"programName\"\r",
+							"      ]\r",
+							"    },\r",
+							"    {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"batchId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"batchName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchDescription\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchStatus\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"batchNoOfClasses\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programId\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"programName\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"batchId\",\r",
+							"        \"batchName\",\r",
+							"        \"batchDescription\",\r",
+							"        \"batchStatus\",\r",
+							"        \"batchNoOfClasses\",\r",
+							"        \"programId\",\r",
+							"        \"programName\"\r",
+							"      ]\r",
+							"    }\r",
+							"    \r",
+							"      ]\r",
+							"    }\r",
+							"  \r",
+							"\r",
+							"pm.test('Get Program by ID Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"Get All batches Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody).to.be.an(\"array\");\r",
+							"    pm.expect(responsebody[0].batchId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].batchName).to.be.a('string');\r",
+							"    pm.expect(responsebody[0].batchDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody[0].batchStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody[0].batchNoOfClasses).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody[0].programName).to.be.a(\"string\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/batches/program/{{newProgramId}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"batches",
+						"program",
+						"{{newProgramId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update by BatchId",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//var bID = pm.globals.get(\"batchId\");\r",
+							"//console.log(\"bID ==>\"+ bID);\r",
+							"\r",
+							"\r",
+							"var moment = require ('moment');\r",
+							"var monthYear = moment().format(\"MMMYY\");\r",
+							"const teamName = \"-CRUDCarriers-SDET-\";\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.globals.set(\"batchName\",monthYear+ teamName +pm.variables.replaceIn('{{$randomInt}}'));\r",
+							"\r",
+							"\r",
+							"\r",
+							"var body =\r",
+							"{\r",
+							"    \"batchName\": pm.globals.get(\"batchName\"),\r",
+							"    \"batchDescription\": \"API07\",\r",
+							"    \"batchStatus\": \"Active\",\r",
+							"    \"batchNoOfClasses\": 13,\r",
+							"    \"programId\": 305,\r",
+							"    \"programName\": \"Jan23-CRUDCarriers-SDET-009\"\r",
+							"}\r",
+							"\r",
+							"pm.collectionVariables.set(\"req_body\", JSON.stringify(body));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"var schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"batchId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"batchName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"batchDescription\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"batchStatus\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"batchNoOfClasses\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"programName\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"batchId\",\r",
+							"    \"batchName\",\r",
+							"    \"batchDescription\",\r",
+							"    \"batchStatus\",\r",
+							"    \"batchNoOfClasses\",\r",
+							"    \"programId\",\r",
+							"    \"programName\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"pm.test('POST Batch Create Schema is valid', function () {\r",
+							"    const responsebody= pm.response.json();\r",
+							"    pm.expect(tv4.validate(responsebody, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"let responsebody= pm.response.json();\r",
+							"pm.test(\"POST Batch Create Test data type of response\",()=>{\r",
+							"    pm.expect(responsebody.batchId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.batchName).to.be.a('string');\r",
+							"    pm.expect(responsebody.programId).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.batchDescription).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.batchStatus).to.be.a(\"string\");\r",
+							"    pm.expect(responsebody.batchNoOfClasses).to.be.a(\"number\");\r",
+							"    pm.expect(responsebody.programName).to.be.a(\"string\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{req_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/batches/{{newBatchId}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"batches",
+						"{{newBatchId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete by Batch ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/batches/{{newBatchId}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"batches",
+						"{{newBatchId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "https://lms-backend-service.herokuapp.com/lms"
+		},
+		{
+			"key": "req_body",
+			"value": ""
+		},
+		{
+			"key": "request_body",
+			"value": ""
+		}
+	]
+}

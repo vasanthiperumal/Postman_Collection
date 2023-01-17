@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "e046e04d-f1ac-48eb-a851-6cc8fb6b2a41",
+		"name": "Team7_LMS_API_2 Data Driven Testing Implementation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25279670"
+	},
+	"item": [
+		{
+			"name": "Create Program By Data Driven",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"const res = pm.response.json();\r",
+							"\r",
+							"console.log(\"pm.globals.get(programId)\"+ res.programId);\r",
+							"pm.globals.set(\"programId\", res.programId);\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"programName\": \"{{program_Name}}\",\r\n    \"programDescription\": \"{{program_Description}}\",\r\n    \"programStatus\": \"{{program_Status}}\",\r\n    \"creationTime\": \"{{creation_Time}}\",\r\n    \"lastModTime\": \"{{lastMod_Time}}\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/saveprogram",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"saveprogram"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Batch By Data Driven",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"const res = pm.response.json();\r",
+							"\r",
+							"//console.log(\"pm.globals.get(programId)\"+ res.programId);\r",
+							"//pm.globals.set(\"programId\", res.programId);\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('content-Type')).to.eql\r",
+							"    ('application/json');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"batchName\":\"{{batchName}}\",\r\n    \"batchDescription\":\"{{batchDescription}}\",\r\n    \"batchStatus\":\"{{batchStatus}}\",\r\n    \"batchNoOfClasses\":\"{{batchNoOfClasses}}\",\r\n    \"programId\":\"{{programId}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/batches",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"batches"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

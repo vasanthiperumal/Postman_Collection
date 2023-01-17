@@ -1,0 +1,607 @@
+{
+	"id": "1adf77a7-de73-49a4-b004-671ee1c82532",
+	"name": "Team7_LMS_API_3 Additional Scenarios",
+	"timestamp": "2023-01-13T22:56:16.382Z",
+	"collection_id": "25279670-04812726-43d9-4116-b05d-d7dbaa078fa8",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 9,
+	"totalFail": 3,
+	"results": [
+		{
+			"id": "4f75eee2-0834-4e51-b85c-649aafb5f4d3",
+			"name": "Create DuplicateProgramName",
+			"url": "https://lms-backend-service.herokuapp.com/lms/saveprogram",
+			"time": 166,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				166
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "beea0164-ec6a-485a-8b1a-74f3bc7a5f55",
+			"name": "Create blank program name",
+			"url": "https://lms-backend-service.herokuapp.com/lms/saveprogram",
+			"time": 31,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 200ms": true,
+				"Content-Type is present": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is present": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Response time is less than 200ms": true,
+					"Content-Type is present": true
+				}
+			]
+		},
+		{
+			"id": "039b097c-ddc2-42f7-9d71-d7286e362be4",
+			"name": "DeletetBynonexistingId",
+			"url": "https://lms-backend-service.herokuapp.com/lms/deletebyprogid/7888",
+			"time": 36,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				36
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d764d192-e433-41e4-b54c-c05e661b6492",
+			"name": "DeletetBynonexistingName",
+			"url": "https://lms-backend-service.herokuapp.com/lms/deletebyprogname/refe",
+			"time": 32,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				32
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c937aebe-8381-4c3f-a5b7-f010ce949b89",
+			"name": "DeletetByblankid/name",
+			"url": "https://lms-backend-service.herokuapp.com/lms/deletebyprogname/",
+			"time": 196,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				196
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "44b08b2a-2824-466f-8c78-81239d7e64da",
+			"name": "GetRequestById AlphaNumeric",
+			"url": "https://lms-backend-service.herokuapp.com/lms/programs/20AS",
+			"time": 32,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				32
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d434a827-b440-4451-9366-defa6b74bfec",
+			"name": "GetRequestById Blank",
+			"url": "https://lms-backend-service.herokuapp.com/lms/programs/",
+			"time": 30,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "64317d58-a3cf-4850-a5a7-e6758321afc4",
+			"name": "GetRequestById Decimal",
+			"url": "https://lms-backend-service.herokuapp.com/lms/programs/1.23",
+			"time": 33,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				33
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "25ace9f0-e476-4212-93f8-1078472fe0eb",
+			"name": "GetRequestById Null",
+			"url": "https://lms-backend-service.herokuapp.com/lms/programs/Null",
+			"time": 29,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				29
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b2078670-7853-453e-be2a-5d07aacc6d6b",
+			"name": "POst blank",
+			"url": "https://lms-backend-service.herokuapp.com/lms/saveprogram",
+			"time": 34,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				34
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "18b9c930-83ef-4449-8fc4-7b34449df85a",
+			"name": "GET Batch by Invalid BatchId",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches/batchId/",
+			"time": 39,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "694db314-4239-4f41-b3f1-d4d5fa63ed91",
+			"name": "GET Batch with Invalid BatchID",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches/batchId/454.45",
+			"time": 32,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "feadab5b-8afc-489c-9901-0d5eeed7a8da",
+			"name": "GET Batch with Invalid BatchID",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches/batchId/DFHHH",
+			"time": 31,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4aba192b-5577-41fc-9509-6ced29bdec53",
+			"name": "GET Batch with Invalid BatchID",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches/batchId/{ }",
+			"time": 29,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "cbaf1d5c-b7ff-4237-b2ad-85081e0d27b1",
+			"name": "Update Batch by BatchName",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches/https",
+			"time": 32,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Status code is 200": false
+				}
+			]
+		},
+		{
+			"id": "126f0977-6046-49da-9e3b-9baf41cceaea",
+			"name": "Create Batch with Invalid ProgramID",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches",
+			"time": 33,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "eee285d8-cd78-48db-bba2-8663b3a76303",
+			"name": "create Batch with Invalid BatchName",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c7651b48-a135-4915-8d24-654195b00d15",
+			"name": "Create Batch with Invalid BatchNoOfClasses",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches",
+			"time": 31,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "28807f9a-f670-4794-87d0-f1601e0334e1",
+			"name": "Get Batch by BatchStatus",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches/batchStatus/Active",
+			"time": 34,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 200": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status code is 200": false
+				}
+			]
+		},
+		{
+			"id": "4b8a7f3b-ba0e-49aa-9b4f-d3cc42d597de",
+			"name": "GET Batch details with queryParameters",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches?programId=305",
+			"time": 96,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				96
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6a95699b-488c-45e5-b4d4-41e042304e40",
+			"name": "GET Batch details with limit parameter",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches?batchStatus=Active&limit=3",
+			"time": 43,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				43
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2f8df911-e8c0-4f94-af29-3c41927b9ffc",
+			"name": "Create Batch with Invalid JSON Format",
+			"url": "https://lms-backend-service.herokuapp.com/lms/batches",
+			"time": 33,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 200": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status code is 200": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1082,
+	"collection": {
+		"requests": [
+			{
+				"id": "4f75eee2-0834-4e51-b85c-649aafb5f4d3",
+				"method": "POST"
+			},
+			{
+				"id": "beea0164-ec6a-485a-8b1a-74f3bc7a5f55",
+				"method": "POST"
+			},
+			{
+				"id": "039b097c-ddc2-42f7-9d71-d7286e362be4",
+				"method": "DELETE"
+			},
+			{
+				"id": "d764d192-e433-41e4-b54c-c05e661b6492",
+				"method": "DELETE"
+			},
+			{
+				"id": "c937aebe-8381-4c3f-a5b7-f010ce949b89",
+				"method": "DELETE"
+			},
+			{
+				"id": "44b08b2a-2824-466f-8c78-81239d7e64da",
+				"method": "GET"
+			},
+			{
+				"id": "d434a827-b440-4451-9366-defa6b74bfec",
+				"method": "GET"
+			},
+			{
+				"id": "64317d58-a3cf-4850-a5a7-e6758321afc4",
+				"method": "GET"
+			},
+			{
+				"id": "25ace9f0-e476-4212-93f8-1078472fe0eb",
+				"method": "GET"
+			},
+			{
+				"id": "b2078670-7853-453e-be2a-5d07aacc6d6b",
+				"method": "POST"
+			},
+			{
+				"id": "18b9c930-83ef-4449-8fc4-7b34449df85a",
+				"method": "GET"
+			},
+			{
+				"id": "694db314-4239-4f41-b3f1-d4d5fa63ed91",
+				"method": "GET"
+			},
+			{
+				"id": "feadab5b-8afc-489c-9901-0d5eeed7a8da",
+				"method": "GET"
+			},
+			{
+				"id": "4aba192b-5577-41fc-9509-6ced29bdec53",
+				"method": "GET"
+			},
+			{
+				"id": "cbaf1d5c-b7ff-4237-b2ad-85081e0d27b1",
+				"method": "PUT"
+			},
+			{
+				"id": "126f0977-6046-49da-9e3b-9baf41cceaea",
+				"method": "POST"
+			},
+			{
+				"id": "eee285d8-cd78-48db-bba2-8663b3a76303",
+				"method": "POST"
+			},
+			{
+				"id": "c7651b48-a135-4915-8d24-654195b00d15",
+				"method": "POST"
+			},
+			{
+				"id": "28807f9a-f670-4794-87d0-f1601e0334e1",
+				"method": "GET"
+			},
+			{
+				"id": "4b8a7f3b-ba0e-49aa-9b4f-d3cc42d597de",
+				"method": "GET"
+			},
+			{
+				"id": "6a95699b-488c-45e5-b4d4-41e042304e40",
+				"method": "GET"
+			},
+			{
+				"id": "2f8df911-e8c0-4f94-af29-3c41927b9ffc",
+				"method": "POST"
+			}
+		]
+	}
+}
